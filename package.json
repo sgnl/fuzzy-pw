@@ -1,0 +1,19 @@
+{
+  "name": "fuzzy_pw",
+  "version": "1.0.0",
+  "description": "Practice your muscle memory passwords.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sgnl/fuzzy-pw.git"
+  },
+  "author": "Ray Farias <rayrfarias@gmail.com> (http://github.com/sgnl)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sgnl/fuzzy-pw/issues"
+  },
+  "homepage": "https://github.com/sgnl/fuzzy-pw#readme"
+}
