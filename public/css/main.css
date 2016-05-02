@@ -1,9 +1,46 @@
+
+@import url(https://fonts.googleapis.com/css?family=Raleway);
+
 html, body {
+    font-family: 'Raleway', sans-serif;
+    font-size: 20px;
+    text-align: center;
+
     min-height: 100%;
-    /* fallback for old browsers */
-    background: #EECDA3;
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: -webkit-linear-gradient(to bottom, #EECDA3 , #EF629F);
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: linear-gradient(to bottom, #EECDA3 , #EF629F);
+
+    background: #ddd6f3; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #ddd6f3 , #faaca8); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #ddd6f3 , #faaca8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.container {
+    min-height: 100%;
+
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.hero {
+    max-width: 66%;
+}
+
+.container header h1 {
+    color: white;
+    margin-bottom: 45px;
+}
+
+.container .hero #app form input[type="text"] {
+    height: 50px;
+    background: transparent;
+
+    outline: 0;
+    border: 0;
 }

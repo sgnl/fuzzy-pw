@@ -22,6 +22,7 @@ const SetTargetString = React.createClass({
       >
         <input type="text"
           onChange={this.handleChange}
+      autoFocus={true}
         />
         <input type="submit" value="Start Training" />
       </form>
