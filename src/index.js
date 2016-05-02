@@ -32,17 +32,29 @@ const SetTargetString = React.createClass({
 const TargetTrainer = React.createClass({
   handleSubmit: function(e) {
     e.preventDefault();
+
+    this.props.compareStrings(e.target.querySelector('input').value);
   },
   render: function() {
     return (
         <form className="trainerForm"
           onSubmit={this.handleSubmit}
         >
-        <label for="trainerInput">Test your might</label>
-        <input id="trainerInput" type="text"
-          onChange={this.handleChange}
-        />
+          <input id="trainerInput" type="text"
+            onChange={this.handleChange}
+          />
+          <input type="submit" value="Test Your Might" />
         </form>
+    );
+  }
+});
+
+const WinBanner = React.createClass({
+  render: function() {
+    return (
+        <p className="winBanner">
+            You Win!
+        </p>
     );
   }
 });
@@ -52,6 +64,7 @@ const Interface = React.createClass({
     return (
         <div className="interface">
             {!this.props.data.targetString && <SetTargetString {...this.props} />}
+            {this.props.data.win && <WinBanner /> }
             {this.props.data.targetString && <TargetTrainer {...this.props} />}
         </div>
     );
@@ -75,6 +88,7 @@ const MuscleMemory = React.createClass({
     return {
       targetString: '',
       attempt: '',
+      win: false,
       characterLength: 0
     };
   },
@@ -83,6 +97,11 @@ const MuscleMemory = React.createClass({
   },
   updateCharacterCount: function(characterLength) {
     this.setState(characterLength);
+  },
+  compareStrings: function(trainerString) {
+    if (trainerString === this.state.targetString) {
+      this.setState({win: true});
+    }
   },
   render: function() {
     return (
