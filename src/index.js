@@ -30,12 +30,16 @@ const SetTargetString = React.createClass({
 });
 
 const TargetTrainer = React.createClass({
+  handleSubmit: function(e) {
+    e.preventDefault();
+  },
   render: function() {
     return (
         <form className="trainerForm"
           onSubmit={this.handleSubmit}
         >
-        <input type="text"
+        <label for="trainerInput">Test your might</label>
+        <input id="trainerInput" type="text"
           onChange={this.handleChange}
         />
         </form>
@@ -71,7 +75,7 @@ const MuscleMemory = React.createClass({
     return {
       targetString: '',
       attempt: '',
-      characterLength: '0'
+      characterLength: 0
     };
   },
   setTarget: function(targetString) {
