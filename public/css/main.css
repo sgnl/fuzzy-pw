@@ -38,9 +38,11 @@ html, body {
 }
 
 .container .hero #app form input[type="text"] {
-    height: 50px;
-    background: transparent;
+    font-size: 1rem;
+    line-height: 4rem;
+    letter-spacing: .125rem;
 
+    background: transparent;
     outline: 0;
     border: 0;
 }
