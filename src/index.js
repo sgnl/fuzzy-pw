@@ -17,14 +17,14 @@ const SetTargetString = React.createClass({
   },
   render: function() {
     return (
-        <form className="setTargetForm"
-          onSubmit={this.handleSubmit}
-        >
-          <input type="text"
-            onChange={this.handleChange}
-          />
-          <input type="submit" value="Start Training" />
-        </form>
+      <form className="setTargetForm"
+        onSubmit={this.handleSubmit}
+      >
+        <input type="text"
+          onChange={this.handleChange}
+        />
+        <input type="submit" value="Start Training" />
+      </form>
     );
   }
 });
@@ -37,14 +37,14 @@ const TargetTrainer = React.createClass({
   },
   render: function() {
     return (
-        <form className="trainerForm"
-          onSubmit={this.handleSubmit}
-        >
-          <input id="trainerInput" type="text"
-            onChange={this.handleChange}
-          />
-          <input type="submit" value="Test Your Might" />
-        </form>
+      <form className="trainerForm"
+        onSubmit={this.handleSubmit}
+      >
+        <input id="trainerInput" type="text"
+          onChange={this.handleChange}
+        />
+        <input type="submit" value="Test Your Might" />
+      </form>
     );
   }
 });
@@ -52,9 +52,9 @@ const TargetTrainer = React.createClass({
 const WinBanner = React.createClass({
   render: function() {
     return (
-        <p className="winBanner">
-            You Win!
-        </p>
+      <p className="winBanner">
+        You Win!
+      </p>
     );
   }
 });
@@ -62,23 +62,22 @@ const WinBanner = React.createClass({
 const Interface = React.createClass({
   render: function() {
     return (
-        <div className="interface">
-            {!this.props.data.targetString && <SetTargetString {...this.props} />}
-            {this.props.data.win && <WinBanner /> }
-            {this.props.data.targetString && <TargetTrainer {...this.props} />}
-        </div>
+      <div className="interface">
+        {!this.props.data.targetString && <SetTargetString {...this.props} />}
+        {this.props.data.targetString && <TargetTrainer {...this.props} />}
+        {this.props.data.win && <WinBanner /> }
+      </div>
     );
   }
 });
 
 const AccuracyVisualAid = React.createClass({
     render: function() {
-        console.log(this.props.data)
     return (
-        <div>
-            <p>This is the AccuracyVisualAid</p>
-            <p>{this.props.data.characterLength}</p>
-        </div>
+      <div>
+        <p>This is the AccuracyVisualAid</p>
+        <p>{this.props.data.characterLength}</p>
+      </div>
     );
   }
 });
@@ -105,10 +104,10 @@ const MuscleMemory = React.createClass({
   },
   render: function() {
     return (
-        <div>
-          <Interface data={this.state} {...this} />
-          <AccuracyVisualAid data={this.state} {...this} />
-        </div>
+      <div>
+        <Interface data={this.state} {...this} />
+        <AccuracyVisualAid data={this.state} {...this} />
+      </div>
     );
   }
 });
