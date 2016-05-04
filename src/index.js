@@ -34,18 +34,26 @@ const TargetTrainer = React.createClass({
   handleSubmit: function(e) {
     e.preventDefault();
 
-    this.props.compareStrings(e.target.querySelector('input').value);
+    let text = e.target.querySelector('input').value;
+
+    this.props.compareStrings(text);
+  },
+  handleTextChange: function(e) {
+    let text = e.target.value;
+
+    this.props.updateAccuracy(text);
   },
   render: function() {
+    console.log(this.props.data)
     return (
       <form className="trainerForm"
         onSubmit={this.handleSubmit}
       >
         <input id="trainerInput" type="text"
-          onChange={this.handleChange}
+          onChange={this.handleTextChange}
           autoFocus={true}
+          value={this.props.data.trainerInput}
         />
-        <p></p>
       </form>
     );
   }
@@ -55,8 +63,18 @@ const WinBanner = React.createClass({
   render: function() {
     return (
       <p className="winBanner">
-        You Win!
+        Success
       </p>
+    );
+  }
+});
+
+const TryAgainBanner = React.createClass({
+  render: function() {
+    return (
+        <p className="tryAgainBanner">
+          Try Again
+        </p>
     );
   }
 });
@@ -67,7 +85,8 @@ const Interface = React.createClass({
       <div className="interface">
         {!this.props.data.targetString && <SetTargetString {...this.props} />}
         {this.props.data.targetString && <TargetTrainer {...this.props} />}
-        {this.props.data.win && <WinBanner /> }
+        {this.props.data.win && <WinBanner />}
+        {(!this.props.data.win && this.props.data.targetString) && <TryAgainBanner />}
       </div>
     );
   }
@@ -75,9 +94,23 @@ const Interface = React.createClass({
 
 const AccuracyVisualAid = React.createClass({
   render: function() {
-    let accuracyBoxes = Array.prototype.map.call(this.props.data.targetString, _ => {
+    let accuracyBoxes = Array.prototype.map.call(this.props.data.targetString, (char, i) => {
+      if (!this.props.data.trainerInput.length) {
+        return (
+            <div className="box box--neutral" key={i}></div>
+        );
+      }
+
+      let boxStatus = null;
+
+      if (char === this.props.data.trainerInput[i]) {
+        boxStatus = true
+      } else {
+        boxStatus = false;
+      }
+
       return (
-          <div className="box box--neutral"></div>
+          <div className={`box box--${boxStatus}`} key={i}></div>
       );
     });
 
@@ -93,6 +126,7 @@ const MuscleMemory = React.createClass({
   getInitialState: function() {
     return {
       targetString: '',
+      trainerInput: '',
       win: false,
       characterLength: 0
     };
@@ -103,10 +137,14 @@ const MuscleMemory = React.createClass({
   updateCharacterCount: function(characterLength) {
     this.setState(characterLength);
   },
-  compareStrings: function(trainerString) {
-    if (trainerString === this.state.targetString) {
+  compareStrings: function(inputString) {
+    if (inputString === this.state.targetString) {
       this.setState({win: true});
     }
+  },
+  updateAccuracy: function(inputString) {
+    console.log(inputString);
+    this.setState({trainerInput: inputString});
   },
   render: function() {
     return (
