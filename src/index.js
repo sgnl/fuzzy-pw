@@ -72,7 +72,7 @@ const WinBanner = React.createClass({
 const TryAgainBanner = React.createClass({
   render: function() {
     return (
-        <p className="tryAgainBanner">
+        <p className="tryAgain banner">
           Try Again
         </p>
     );

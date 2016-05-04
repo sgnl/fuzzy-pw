@@ -43,7 +43,11 @@ html, body {
     }
 
     #app {
-        color: #444;
+        color: #333;
+
+        .interface {
+            margin: 1rem 0 1.5rem;
+        }
 
         form input {
             font-size: 1rem;
@@ -58,7 +62,7 @@ html, body {
         }
 
         .accuracyDisplay {
-            margin-top: 40px;
+            min-height: 60px;
 
             display: flex;
             display: -ms-flexbox;
@@ -73,18 +77,41 @@ html, body {
             .box {
                 height: 20px;
                 width: 20px;
-                background-color: #444;
+                background-color: #666;
+
+                border: 1px solid #666;
+
+                -webkit-transition: background-color 0.25s;
+                transition: background-color 0.25s;
+
+                &--neutral {
+                    
+                }
 
                 &-success {
-                    background-color: #22FFBB; 
+                    background-color: #22FFBB;
                 }
 
                 &-fail {
                     background-color: #FF5888;
+                    -webkit-animation: grow 0.25s ease;
+                    animation: grow 0.25s ease;
+                    -webkit-animation-iteration-count: 1;
+                    animation-iteration-count: 1;
                 }
             }
         }
+    }
+}
 
+@-webkit-keyframes grow {
+    50% {
+        height: 24px;
+        width: 24px;
     }
 
+    100% {
+        height: 20px;
+        width: 20px;
+    }
 }
