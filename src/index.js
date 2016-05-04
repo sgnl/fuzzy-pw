@@ -74,11 +74,16 @@ const Interface = React.createClass({
 });
 
 const AccuracyVisualAid = React.createClass({
-    render: function() {
+  render: function() {
+    let accuracyBoxes = Array.prototype.map.call(this.props.data.targetString, _ => {
+      return (
+          <div className="box box--neutral"></div>
+      );
+    });
+
     return (
-      <div>
-        <p>This is the AccuracyVisualAid</p>
-        <p>{this.props.data.characterLength}</p>
+      <div className="accuracyDisplay">
+        {accuracyBoxes}
       </div>
     );
   }
@@ -88,7 +93,6 @@ const MuscleMemory = React.createClass({
   getInitialState: function() {
     return {
       targetString: '',
-      attempt: '',
       win: false,
       characterLength: 0
     };
