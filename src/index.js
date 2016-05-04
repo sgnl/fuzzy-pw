@@ -24,7 +24,7 @@ const SetTargetString = React.createClass({
           onChange={this.handleChange}
           autoFocus={true}
         />
-        <p>Enter your phrase</p>
+        <p>set your target</p>
       </form>
     );
   }
@@ -44,7 +44,6 @@ const TargetTrainer = React.createClass({
     this.props.updateAccuracy(text);
   },
   render: function() {
-    console.log(this.props.data)
     return (
       <form className="trainerForm"
         onSubmit={this.handleSubmit}
@@ -59,22 +58,12 @@ const TargetTrainer = React.createClass({
   }
 });
 
-const WinBanner = React.createClass({
+const FeedbackBanner = React.createClass({
   render: function() {
     return (
       <p className="winBanner">
-        Success
+        {this.props.message}
       </p>
-    );
-  }
-});
-
-const TryAgainBanner = React.createClass({
-  render: function() {
-    return (
-        <p className="tryAgain banner">
-          Try Again
-        </p>
     );
   }
 });
@@ -85,8 +74,7 @@ const Interface = React.createClass({
       <div className="interface">
         {!this.props.data.targetString && <SetTargetString {...this.props} />}
         {this.props.data.targetString && <TargetTrainer {...this.props} />}
-        {this.props.data.win && <WinBanner />}
-        {(!this.props.data.win && this.props.data.targetString) && <TryAgainBanner />}
+        {this.props.data.win && <FeedbackBanner message={this.props.data.bannerMessage}/>}
       </div>
     );
   }
@@ -129,6 +117,7 @@ const MuscleMemory = React.createClass({
     return {
       targetString: '',
       trainerInput: '',
+      bannerMessage: '',
       win: false,
       characterLength: 0
     };
@@ -140,12 +129,20 @@ const MuscleMemory = React.createClass({
     this.setState(characterLength);
   },
   compareStrings: function(inputString) {
+    switch(true) {
+      case inputString.length < this.state.targetString:
+        this.setState({})
+      case inputString.length > this.state.targetString:
+      default:
+        
+    }
+
     if (inputString === this.state.targetString) {
       this.setState({win: true});
+      this.setState({bannerMessage: 'success!'});
     }
   },
   updateAccuracy: function(inputString) {
-    console.log(inputString);
     this.setState({trainerInput: inputString});
   },
   render: function() {
