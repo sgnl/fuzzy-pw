@@ -20,11 +20,11 @@ const SetTargetString = React.createClass({
       <form className="setTargetForm"
         onSubmit={this.handleSubmit}
       >
-        <input type="text"
+        <input type="password"
           onChange={this.handleChange}
-      autoFocus={true}
+          autoFocus={true}
         />
-        <input type="submit" value="Start Training" />
+        <p>Enter your phrase</p>
       </form>
     );
   }
@@ -43,8 +43,9 @@ const TargetTrainer = React.createClass({
       >
         <input id="trainerInput" type="text"
           onChange={this.handleChange}
+          autoFocus={true}
         />
-        <input type="submit" value="Test Your Might" />
+        <p></p>
       </form>
     );
   }
