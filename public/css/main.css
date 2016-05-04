@@ -51,4 +51,8 @@ html, body {
       .container #app .accuracyDisplay .box {
         height: 20px;
         width: 20px;
-        background-color: #666; }
+        background-color: #444; }
+        .container #app .accuracyDisplay .box-success {
+          background-color: #22FFBB; }
+        .container #app .accuracyDisplay .box-fail {
+          background-color: #FF5888; }

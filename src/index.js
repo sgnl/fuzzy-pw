@@ -104,13 +104,15 @@ const AccuracyVisualAid = React.createClass({
       let boxStatus = null;
 
       if (char === this.props.data.trainerInput[i]) {
-        boxStatus = true
+        boxStatus = 'success';
+      } else if (!this.props.data.trainerInput[i]) {
+        boxStatus = 'neutral';
       } else {
-        boxStatus = false;
+        boxStatus = 'fail';
       }
 
       return (
-          <div className={`box box--${boxStatus}`} key={i}></div>
+          <div className={`box box-${boxStatus}`} key={i}></div>
       );
     });
 
