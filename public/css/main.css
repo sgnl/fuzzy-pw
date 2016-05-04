@@ -31,7 +31,7 @@ html, body {
   .container #app {
     color: #333; }
     .container #app .interface {
-      margin: 1rem 0 1.5rem; }
+      margin: 2.5rem 0 1.25rem; }
     .container #app form input {
       font-size: 1rem;
       line-height: 2.5rem;
