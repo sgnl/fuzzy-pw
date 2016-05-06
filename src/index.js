@@ -85,7 +85,7 @@ const AccuracyVisualAid = React.createClass({
     let accuracyBoxes = Array.prototype.map.call(this.props.data.targetString, (char, i) => {
       if (!this.props.data.trainerInput.length) {
         return (
-            <div className="box box--neutral" key={i}></div>
+            <div className="box box-initial-neutral" key={i}></div>
         );
       }
 
@@ -94,7 +94,7 @@ const AccuracyVisualAid = React.createClass({
       if (char === this.props.data.trainerInput[i]) {
         boxStatus = 'success';
       } else if (!this.props.data.trainerInput[i]) {
-        boxStatus = 'neutral';
+        boxStatus = 'initial-neutral';
       } else {
         boxStatus = 'fail';
       }
