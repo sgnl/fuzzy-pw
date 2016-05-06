@@ -41,6 +41,8 @@ html, body {
       outline: 0;
       border: 0;
       border-bottom: 1px solid #fff; }
+    .container #app .banner {
+      min-height: 24px; }
     .container #app .accuracyDisplay {
       min-height: 60px;
       display: flex;
