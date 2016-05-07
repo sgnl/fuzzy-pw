@@ -1,7 +1,7 @@
 module.exports = {
   entry: './src/index',
   output: {
-    filename: 'public/js/browser-bundle.js'
+    filename: 'js/browser-bundle.js'
   },
   devtool: 'source-map',
   module: {
