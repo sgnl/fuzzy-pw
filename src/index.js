@@ -48,7 +48,7 @@ const TargetTrainer = React.createClass({
       <form className="trainerForm"
         onSubmit={this.handleSubmit}
       >
-        <input id="trainerInput" type="text"
+        <input id="trainerInput" type="password"
           onChange={this.handleTextChange}
           autoFocus={true}
           value={this.props.data.trainerInput}
