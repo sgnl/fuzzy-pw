@@ -131,6 +131,7 @@
 	  displayName: 'Interface',
 	
 	  render: function render() {
+	    console.log(this.props);
 	    return React.createElement(
 	      'div',
 	      { className: 'interface' },
@@ -194,9 +195,11 @@
 	  compareStrings: function compareStrings(inputString) {
 	    switch (true) {
 	      case inputString.length < this.state.targetString.length:
+	        this.setState({ trainerInput: '' });
 	        return this.setState({ bannerMessage: 'attempt too short. try again.' });
 	
 	      case inputString.length > this.state.targetString.length:
+	        this.setState({ trainerInput: '' });
 	        return this.setState({ bannerMessage: 'attempt too long. try agin.' });
 	
 	      case inputString === this.state.targetString:

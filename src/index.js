@@ -70,6 +70,7 @@ const FeedbackBanner = React.createClass({
 
 const Interface = React.createClass({
   render: function() {
+    console.log(this.props);
     return (
       <div className="interface">
         {!this.props.data.targetString && <SetTargetString {...this.props} />}
@@ -131,10 +132,12 @@ const MuscleMemory = React.createClass({
   compareStrings: function(inputString) {
     switch(true) {
       case inputString.length < this.state.targetString.length:
-        return this.setState({ bannerMessage: 'attempt too short. try again.'})
+        this.setState({trainerInput: ''});
+        return this.setState({ bannerMessage: 'attempt too short. try again.'});
       
       case inputString.length > this.state.targetString.length:
-        return this.setState({ bannerMessage: 'attempt too long. try agin.'})
+        this.setState({trainerInput: ''});
+        return this.setState({ bannerMessage: 'attempt too long. try agin.'});
 
       case inputString === this.state.targetString:
         this.setState({win: true});
