@@ -70,7 +70,6 @@ const FeedbackBanner = React.createClass({
 
 const Interface = React.createClass({
   render: function() {
-    console.log(this.props);
     return (
       <div className="interface">
         {!this.props.data.targetString && <SetTargetString {...this.props} />}
@@ -129,23 +128,31 @@ const MuscleMemory = React.createClass({
   updateCharacterCount: function(characterLength) {
     this.setState(characterLength);
   },
+  resetTrainerInput: function(input = '') {
+    this.setState({trainerInput: input});
+  },
+  updateBanner: function(msg) {
+    this.setState({bannerMessage: msg});
+  },
   compareStrings: function(inputString) {
     switch(true) {
       case inputString.length < this.state.targetString.length:
-        this.setState({trainerInput: ''});
-        return this.setState({ bannerMessage: 'attempt too short. try again.'});
+        this.resetTrainerInput();
+        return this.updateBanner('attempt too short. try again.');
       
       case inputString.length > this.state.targetString.length:
-        this.setState({trainerInput: ''});
-        return this.setState({ bannerMessage: 'attempt too long. try agin.'});
+        this.resetTrainerInput();
+        return this.updateBanner('attempt too long. try agin.');
 
       case inputString === this.state.targetString:
         this.setState({win: true});
-        this.setState({bannerMessage: 'success!'});
+        this.resetTrainerInput();
+        this.updateBanner('success!');
         return;
 
       default:
-        console.log('nope. try again.');
+        this.resetTrainerInput();
+        this.updateBanner('no match.');
     }
   },
   updateAccuracy: function(inputString) {

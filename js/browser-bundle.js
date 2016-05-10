@@ -131,7 +131,6 @@
 	  displayName: 'Interface',
 	
 	  render: function render() {
-	    console.log(this.props);
 	    return React.createElement(
 	      'div',
 	      { className: 'interface' },
@@ -192,23 +191,33 @@
 	  updateCharacterCount: function updateCharacterCount(characterLength) {
 	    this.setState(characterLength);
 	  },
+	  resetTrainerInput: function resetTrainerInput() {
+	    var input = arguments.length <= 0 || arguments[0] === undefined ? '' : arguments[0];
+	
+	    this.setState({ trainerInput: input });
+	  },
+	  updateBanner: function updateBanner(msg) {
+	    this.setState({ bannerMessage: msg });
+	  },
 	  compareStrings: function compareStrings(inputString) {
 	    switch (true) {
 	      case inputString.length < this.state.targetString.length:
-	        this.setState({ trainerInput: '' });
-	        return this.setState({ bannerMessage: 'attempt too short. try again.' });
+	        this.resetTrainerInput();
+	        return this.updateBanner('attempt too short. try again.');
 	
 	      case inputString.length > this.state.targetString.length:
-	        this.setState({ trainerInput: '' });
-	        return this.setState({ bannerMessage: 'attempt too long. try agin.' });
+	        this.resetTrainerInput();
+	        return this.updateBanner('attempt too long. try agin.');
 	
 	      case inputString === this.state.targetString:
 	        this.setState({ win: true });
-	        this.setState({ bannerMessage: 'success!' });
+	        this.resetTrainerInput();
+	        this.updateBanner('success!');
 	        return;
 	
 	      default:
-	        console.log('nope. try again.');
+	        this.resetTrainerInput();
+	        this.updateBanner('no match.');
 	    }
 	  },
 	  updateAccuracy: function updateAccuracy(inputString) {
