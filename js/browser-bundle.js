@@ -173,8 +173,8 @@
 	  }
 	});
 	
-	var MuscleMemory = React.createClass({
-	  displayName: 'MuscleMemory',
+	var MuscleMemoryApp = React.createClass({
+	  displayName: 'MuscleMemoryApp',
 	
 	  getInitialState: function getInitialState() {
 	    return {
@@ -182,6 +182,7 @@
 	      trainerInput: '',
 	      bannerMessage: '',
 	      win: false,
+	      resetState: false,
 	      characterLength: 0
 	    };
 	  },
@@ -233,7 +234,7 @@
 	  }
 	});
 	
-	ReactDOM.render(React.createElement(MuscleMemory, null), document.getElementById('app'));
+	ReactDOM.render(React.createElement(MuscleMemoryApp, null), document.getElementById('app'));
 
 /***/ },
 /* 1 */

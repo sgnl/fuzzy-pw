@@ -19,7 +19,7 @@ const SetTargetString = React.createClass({
     return (
       <form className="setTargetForm"
         onSubmit={this.handleSubmit}
-      >
+        >
         <input type="password"
           onChange={this.handleChange}
           autoFocus={true}
@@ -74,7 +74,7 @@ const Interface = React.createClass({
       <div className="interface">
         {!this.props.data.targetString && <SetTargetString {...this.props} />}
         {this.props.data.targetString && <TargetTrainer {...this.props} />}
-        {<FeedbackBanner message={this.props.data.bannerMessage}/>}
+        {<FeedbackBanner message={this.props.data.bannerMessage}/>} 
       </div>
     );
   }
@@ -112,13 +112,14 @@ const AccuracyVisualAid = React.createClass({
   }
 });
 
-const MuscleMemory = React.createClass({
+const MuscleMemoryApp = React.createClass({
   getInitialState: function() {
     return {
       targetString: '',
       trainerInput: '',
       bannerMessage: '',
       win: false,
+      resetState: false,
       characterLength: 0
     };
   },
@@ -168,4 +169,4 @@ const MuscleMemory = React.createClass({
   }
 });
 
-ReactDOM.render(<MuscleMemory />, document.getElementById('app'));
+ReactDOM.render(<MuscleMemoryApp />, document.getElementById('app'));
