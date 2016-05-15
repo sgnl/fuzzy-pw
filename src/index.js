@@ -2,6 +2,8 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
 
+import { Interface } from './components/Interface'
+
 const SetTargetString = React.createClass({
   handleSubmit: function(e) {
     e.preventDefault();
@@ -64,18 +66,6 @@ const FeedbackBanner = React.createClass({
       <p className="banner feedback-banner">
         {this.props.message}
       </p>
-    );
-  }
-});
-
-const Interface = React.createClass({
-  render: function() {
-    return (
-      <div className="interface">
-        {!this.props.data.targetString && <SetTargetString {...this.props} />}
-        {this.props.data.targetString && <TargetTrainer {...this.props} />}
-        {<FeedbackBanner message={this.props.data.bannerMessage}/>} 
-      </div>
     );
   }
 });
