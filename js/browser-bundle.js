@@ -50,116 +50,10 @@
 	
 	var _Interface = __webpack_require__(1);
 	
+	var _AccuracyVisualAid = __webpack_require__(170);
+	
 	var React = __webpack_require__(2);
 	var ReactDOM = __webpack_require__(33);
-	
-	var SetTargetString = React.createClass({
-	  displayName: 'SetTargetString',
-	
-	  handleSubmit: function handleSubmit(e) {
-	    e.preventDefault();
-	
-	    var targetString = { targetString: e.target.querySelector('input').value };
-	
-	    this.props.setTarget(targetString);
-	  },
-	  handleChange: function handleChange(e) {
-	    var characterLength = { characterLength: e.target.value.length };
-	
-	    this.props.updateCharacterCount(characterLength);
-	  },
-	  render: function render() {
-	    return React.createElement(
-	      'form',
-	      { className: 'setTargetForm',
-	        onSubmit: this.handleSubmit
-	      },
-	      React.createElement('input', { type: 'password',
-	        onChange: this.handleChange,
-	        autoFocus: true
-	      }),
-	      React.createElement(
-	        'p',
-	        null,
-	        'set your target'
-	      )
-	    );
-	  }
-	});
-	
-	var TargetTrainer = React.createClass({
-	  displayName: 'TargetTrainer',
-	
-	  handleSubmit: function handleSubmit(e) {
-	    e.preventDefault();
-	
-	    var text = e.target.querySelector('input').value;
-	
-	    this.props.compareStrings(text);
-	  },
-	  handleTextChange: function handleTextChange(e) {
-	    var text = e.target.value;
-	
-	    this.props.updateAccuracy(text);
-	  },
-	  render: function render() {
-	    return React.createElement(
-	      'form',
-	      { className: 'trainerForm',
-	        onSubmit: this.handleSubmit
-	      },
-	      React.createElement('input', { id: 'trainerInput', type: 'password',
-	        onChange: this.handleTextChange,
-	        autoFocus: true,
-	        value: this.props.data.trainerInput
-	      })
-	    );
-	  }
-	});
-	
-	var FeedbackBanner = React.createClass({
-	  displayName: 'FeedbackBanner',
-	
-	  render: function render() {
-	    return React.createElement(
-	      'p',
-	      { className: 'banner feedback-banner' },
-	      this.props.message
-	    );
-	  }
-	});
-	
-	var AccuracyVisualAid = React.createClass({
-	  displayName: 'AccuracyVisualAid',
-	
-	  render: function render() {
-	    var _this = this;
-	
-	    var accuracyBoxes = Array.prototype.map.call(this.props.data.targetString, function (char, i) {
-	      if (!_this.props.data.trainerInput.length) {
-	        return React.createElement('div', { className: 'box box-initial-neutral', key: i });
-	      }
-	
-	      var boxStatus = null;
-	
-	      if (char === _this.props.data.trainerInput[i]) {
-	        boxStatus = 'success';
-	      } else if (!_this.props.data.trainerInput[i]) {
-	        boxStatus = 'initial-neutral';
-	      } else {
-	        boxStatus = 'fail';
-	      }
-	
-	      return React.createElement('div', { className: 'box box-' + boxStatus, key: i });
-	    });
-	
-	    return React.createElement(
-	      'div',
-	      { className: 'accuracyDisplay' },
-	      accuracyBoxes
-	    );
-	  }
-	});
 	
 	var MuscleMemoryApp = React.createClass({
 	  displayName: 'MuscleMemoryApp',
@@ -217,7 +111,7 @@
 	      'div',
 	      null,
 	      React.createElement(_Interface.Interface, _extends({ data: this.state }, this)),
-	      React.createElement(AccuracyVisualAid, _extends({ data: this.state }, this))
+	      React.createElement(_AccuracyVisualAid.AccuracyVisualAid, _extends({ data: this.state }, this))
 	    );
 	  }
 	});
@@ -20389,6 +20283,57 @@
 	});
 	
 	exports.FeedbackBanner = FeedbackBanner;
+
+/***/ },
+/* 170 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.AccuracyVisualAid = undefined;
+	
+	var _react = __webpack_require__(2);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var AccuracyVisualAid = _react2.default.createClass({
+	  displayName: 'AccuracyVisualAid',
+	
+	  render: function render() {
+	    var _this = this;
+	
+	    var accuracyBoxes = Array.prototype.map.call(this.props.data.targetString, function (char, i) {
+	      if (!_this.props.data.trainerInput.length) {
+	        return _react2.default.createElement('div', { className: 'box box-initial-neutral', key: i });
+	      }
+	
+	      var boxStatus = null;
+	
+	      if (char === _this.props.data.trainerInput[i]) {
+	        boxStatus = 'success';
+	      } else if (!_this.props.data.trainerInput[i]) {
+	        boxStatus = 'initial-neutral';
+	      } else {
+	        boxStatus = 'fail';
+	      }
+	
+	      return _react2.default.createElement('div', { className: 'box box-' + boxStatus, key: i });
+	    });
+	
+	    return _react2.default.createElement(
+	      'div',
+	      { className: 'accuracyDisplay' },
+	      accuracyBoxes
+	    );
+	  }
+	});
+	
+	exports.AccuracyVisualAid = AccuracyVisualAid;
 
 /***/ }
 /******/ ]);
