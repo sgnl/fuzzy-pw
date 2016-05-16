@@ -6,22 +6,22 @@ const TargetTrainer = React.createClass({
 
     let text = e.target.querySelector('input').value;
 
-    this.props.compareStrings(text);
+    this.props.handleSubmit(text);
   },
-  handleTextChange: function(e) {
+  handleInputChange: function(e) {
     let text = e.target.value;
 
-    this.props.updateAccuracy(text);
+    this.props.handleInputChange(text);
   },
   render: function() {
     return (
         <form className="trainerForm"
-      onSubmit={this.handleSubmit}
+          onSubmit={this.handleSubmit}
         >
         <input id="trainerInput" type="password"
-      onChange={this.handleTextChange}
-      autoFocus={true}
-      value={this.props.data.trainerInput}
+          onChange={this.handleInputChange}
+          autoFocus={true}
+          value={this.props.data.trainerInput}
         />
         </form>
     );

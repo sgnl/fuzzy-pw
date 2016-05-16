@@ -10,14 +10,31 @@ const MuscleMemoryApp = React.createClass({
     return {
       targetString: '',
       trainerInput: '',
-      bannerMessage: '',
+      bannerMessage: 'set the key-pattern you want to train',
       win: false,
       resetState: false,
       characterLength: 0
     };
   },
-  setTarget: function(targetString) {
-    this.setState(targetString);
+  handleInputChange: function(inputValue) {
+    this.setState({ trainerInput: inputValue })
+  },
+  handleSubmit: function(inputValue) {
+
+    // if there is no target then set the target to be the string from the form
+    if (!this.state.targetString) {
+
+      this.setState({
+        targetString: inputValue,
+        trainerInput: '',
+        bannerMessage: 'press the enter key to compare'
+      })
+
+    // otherwise we are in the `game loop` so we should compare
+    // the input with the target string which was set earlier
+    } else {
+      this.handleInputChange(inputValue)
+    }
   },
   updateCharacterCount: function(characterLength) {
     this.setState(characterLength);
