@@ -18,7 +18,7 @@ const MuscleMemoryApp = React.createClass({
     return this.initialState;
   },
   handleInputChange: function(inputValue) {
-    this.setState({ trainerInput: inputValue })
+    this.setState({ trainerInput: inputValue });
   },
   handleSubmit: function(inputValue) {
     // if there is no target then set the target to be the string from the form
@@ -27,12 +27,12 @@ const MuscleMemoryApp = React.createClass({
         targetString: inputValue,
         trainerInput: '',
         bannerMessage: 'press the enter key to compare'
-      })
+      });
 
     // otherwise we are in the `game loop` so we should compare
     // the input with the target string which was set earlier
     } else {
-      this.handleInputChange(inputValue)
+      this.compareStrings(inputValue);
     }
   },
   updateCharacterCount: function(characterLength) {
@@ -61,15 +61,15 @@ const MuscleMemoryApp = React.createClass({
         return;
 
       default:
-        this.resetTrainerInput();
-        this.updateBanner('no match.');
+        this.resetTrainerInput()
+        this.updateBanner('no match.')
     }
   },
   updateAccuracy: function(inputString) {
     this.setState({trainerInput: inputString});
   },
   resetApp: function() {
-    this.setState(this.initialState)
+    this.setState(this.initialState);
   },
   render: function() {
     return (

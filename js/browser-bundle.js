@@ -84,7 +84,7 @@
 	      // otherwise we are in the `game loop` so we should compare
 	      // the input with the target string which was set earlier
 	    } else {
-	        this.handleInputChange(inputValue);
+	        this.compareStrings(inputValue);
 	      }
 	  },
 	  updateCharacterCount: function updateCharacterCount(characterLength) {
