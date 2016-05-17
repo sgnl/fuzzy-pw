@@ -58,22 +58,21 @@
 	var MuscleMemoryApp = React.createClass({
 	  displayName: 'MuscleMemoryApp',
 	
+	  initialState: {
+	    targetString: '',
+	    trainerInput: '',
+	    bannerMessage: 'set the key-pattern you want to train',
+	    win: false,
+	    resetState: false,
+	    characterLength: 0
+	  },
 	  getInitialState: function getInitialState() {
-	    return {
-	      targetString: '',
-	      trainerInput: '',
-	      bannerMessage: 'set the key-pattern you want to train',
-	      win: false,
-	      resetState: false,
-	      characterLength: 0
-	    };
+	    return this.initialState;
 	  },
 	  handleInputChange: function handleInputChange(inputValue) {
 	    this.setState({ trainerInput: inputValue });
 	  },
 	  handleSubmit: function handleSubmit(inputValue) {
-	    console.log('handle submit fired');
-	
 	    // if there is no target then set the target to be the string from the form
 	    if (!this.state.targetString) {
 	      this.setState({
@@ -123,11 +122,14 @@
 	  updateAccuracy: function updateAccuracy(inputString) {
 	    this.setState({ trainerInput: inputString });
 	  },
+	  resetApp: function resetApp() {
+	    this.setState(this.initialState);
+	  },
 	  render: function render() {
 	    return React.createElement(
 	      'div',
 	      null,
-	      React.createElement(_Interface.Interface, _extends({ data: this.state }, this)),
+	      React.createElement(_Interface.Interface, _extends({ key: this.state.resetState, data: this.state }, this)),
 	      React.createElement(_AccuracyVisualAid.AccuracyVisualAid, _extends({ data: this.state }, this))
 	    );
 	  }
@@ -3761,26 +3763,38 @@
 	var TargetTrainer = _react2.default.createClass({
 	  displayName: 'TargetTrainer',
 	
-	  handleSubmit: function handleSubmit(e) {
-	    e.preventDefault();
-	
-	    var text = e.target.querySelector('input').value;
-	
-	    this.props.handleSubmit(text);
-	  },
 	  handleInputChange: function handleInputChange(e) {
+	    console.log('input change');
+	    e.preventDefault();
 	    var text = e.target.value;
 	
 	    this.props.handleInputChange(text);
 	  },
+	  handleReset: function handleReset(e) {
+	    if (e.keyCode === 13 && e.shiftKey) {
+	      e.preventDefault();
+	      e.stopPropagation();
+	      return this.props.resetApp();
+	    }
+	
+	    if (e.keyCode === 13) {
+	      e.preventDefault();
+	      console.log('submit', e.nativeEvent.keyCode);
+	
+	      var inputValue = e.target.value;
+	
+	      this.props.handleSubmit(inputValue);
+	    }
+	  },
 	  render: function render() {
 	    return _react2.default.createElement(
 	      'form',
-	      { className: 'trainerForm',
-	        onSubmit: this.handleSubmit
+	      {
+	        className: 'trainerForm'
 	      },
 	      _react2.default.createElement('input', { id: 'trainerInput', type: 'password',
 	        onChange: this.handleInputChange,
+	        onKeyDown: this.handleReset,
 	        autoFocus: true,
 	        value: this.props.data.trainerInput
 	      })

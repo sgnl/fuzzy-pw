@@ -6,24 +6,23 @@ import { Interface } from './components/Interface'
 import { AccuracyVisualAid } from './components/AccuracyVisualAid'
 
 const MuscleMemoryApp = React.createClass({
+  initialState: {
+    targetString: '',
+    trainerInput: '',
+    bannerMessage: 'set the key-pattern you want to train',
+    win: false,
+    resetState: false,
+    characterLength: 0
+  },
   getInitialState: function() {
-    return {
-      targetString: '',
-      trainerInput: '',
-      bannerMessage: 'set the key-pattern you want to train',
-      win: false,
-      resetState: false,
-      characterLength: 0
-    };
+    return this.initialState;
   },
   handleInputChange: function(inputValue) {
     this.setState({ trainerInput: inputValue })
   },
   handleSubmit: function(inputValue) {
-
     // if there is no target then set the target to be the string from the form
     if (!this.state.targetString) {
-
       this.setState({
         targetString: inputValue,
         trainerInput: '',
@@ -69,10 +68,13 @@ const MuscleMemoryApp = React.createClass({
   updateAccuracy: function(inputString) {
     this.setState({trainerInput: inputString});
   },
+  resetApp: function() {
+    this.setState(this.initialState)
+  },
   render: function() {
     return (
       <div>
-        <Interface data={this.state} {...this} />
+        <Interface key={this.state.resetState} data={this.state} {...this} />
         <AccuracyVisualAid data={this.state} {...this} />
       </div>
     );
