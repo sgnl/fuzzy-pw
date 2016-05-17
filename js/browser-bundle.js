@@ -72,10 +72,10 @@
 	    this.setState({ trainerInput: inputValue });
 	  },
 	  handleSubmit: function handleSubmit(inputValue) {
+	    console.log('handle submit fired');
 	
 	    // if there is no target then set the target to be the string from the form
 	    if (!this.state.targetString) {
-	
 	      this.setState({
 	        targetString: inputValue,
 	        trainerInput: '',
@@ -3825,7 +3825,7 @@
 /* 35 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -3838,37 +3838,29 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var AccuracyVisualAid = _react2.default.createClass({
-	  displayName: 'AccuracyVisualAid',
-	
-	  render: function render() {
-	    var _this = this;
-	
-	    var accuracyBoxes = Array.prototype.map.call(this.props.data.targetString, function (char, i) {
-	      if (!_this.props.data.trainerInput.length) {
-	        return _react2.default.createElement('div', { className: 'box box-initial-neutral', key: i });
+	var AccuracyVisualAid = function AccuracyVisualAid(props) {
+	  return _react2.default.createElement(
+	    "div",
+	    { className: "accuracyDisplay" },
+	    Array.prototype.map.call(props.data.targetString, function (char, i) {
+	      if (!props.data.trainerInput.length) {
+	        return _react2.default.createElement("div", { className: "box box-initial-neutral", key: i });
 	      }
 	
 	      var boxStatus = null;
 	
-	      if (char === _this.props.data.trainerInput[i]) {
+	      if (char === props.data.trainerInput[i]) {
 	        boxStatus = 'success';
-	      } else if (!_this.props.data.trainerInput[i]) {
+	      } else if (!props.data.trainerInput[i]) {
 	        boxStatus = 'initial-neutral';
 	      } else {
 	        boxStatus = 'fail';
 	      }
 	
-	      return _react2.default.createElement('div', { className: 'box box-' + boxStatus, key: i });
-	    });
-	
-	    return _react2.default.createElement(
-	      'div',
-	      { className: 'accuracyDisplay' },
-	      accuracyBoxes
-	    );
-	  }
-	});
+	      return _react2.default.createElement("div", { className: "box box-" + boxStatus, key: i });
+	    })
+	  );
+	};
 	
 	exports.AccuracyVisualAid = AccuracyVisualAid;
 
