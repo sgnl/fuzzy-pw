@@ -2,8 +2,8 @@ import React from 'react'
 
 const TargetTrainer = React.createClass({
   handleInputChange: function(e) {
-    console.log('input change');
     e.preventDefault();
+    
     let text = e.target.value;
 
     this.props.handleInputChange(text);
@@ -17,7 +17,6 @@ const TargetTrainer = React.createClass({
 
     if (e.keyCode === 13) {
       e.preventDefault();
-      console.log('submit', e.nativeEvent.keyCode);
 
       let inputValue = e.target.value;
 
