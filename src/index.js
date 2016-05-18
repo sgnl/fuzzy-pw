@@ -6,16 +6,17 @@ import { Interface } from './components/Interface'
 import { AccuracyVisualAid } from './components/AccuracyVisualAid'
 
 const MuscleMemoryApp = React.createClass({
-  initialState: {
-    targetString: '',
-    trainerInput: '',
-    bannerMessage: 'set the key-pattern you want to train',
-    win: false,
-    resetState: false,
-    characterLength: 0
+  initialState: function() {
+    return {
+      targetString: '',
+      trainerInput: '',
+      bannerMessage: 'set the key-pattern you want to train',
+      win: false,
+      resetState: false
+    }
   },
   getInitialState: function() {
-    return this.initialState;
+    return this.initialState();
   },
   handleInputChange: function(inputValue) {
     this.setState({ trainerInput: inputValue });
@@ -26,7 +27,7 @@ const MuscleMemoryApp = React.createClass({
       this.setState({
         targetString: inputValue,
         trainerInput: '',
-        bannerMessage: 'press the enter key to compare'
+        bannerMessage: 'press the enter key to compare. press shift+enter to reset'
       });
 
     // otherwise we are in the `game loop` so we should compare
