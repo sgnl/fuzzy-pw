@@ -58,16 +58,17 @@
 	var MuscleMemoryApp = React.createClass({
 	  displayName: 'MuscleMemoryApp',
 	
-	  initialState: {
-	    targetString: '',
-	    trainerInput: '',
-	    bannerMessage: 'set the key-pattern you want to train',
-	    win: false,
-	    resetState: false,
-	    characterLength: 0
+	  initialState: function initialState() {
+	    return {
+	      targetString: '',
+	      trainerInput: '',
+	      bannerMessage: 'set the key-pattern you want to train',
+	      win: false,
+	      resetState: false
+	    };
 	  },
 	  getInitialState: function getInitialState() {
-	    return this.initialState;
+	    return this.initialState();
 	  },
 	  handleInputChange: function handleInputChange(inputValue) {
 	    this.setState({ trainerInput: inputValue });
@@ -78,7 +79,7 @@
 	      this.setState({
 	        targetString: inputValue,
 	        trainerInput: '',
-	        bannerMessage: 'press the enter key to compare'
+	        bannerMessage: 'press the enter key to compare. press shift+enter to reset'
 	      });
 	
 	      // otherwise we are in the `game loop` so we should compare
@@ -3747,7 +3748,7 @@
 /* 33 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -3761,11 +3762,11 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var TargetTrainer = _react2.default.createClass({
-	  displayName: 'TargetTrainer',
+	  displayName: "TargetTrainer",
 	
 	  handleInputChange: function handleInputChange(e) {
-	    console.log('input change');
 	    e.preventDefault();
+	
 	    var text = e.target.value;
 	
 	    this.props.handleInputChange(text);
@@ -3779,7 +3780,6 @@
 	
 	    if (e.keyCode === 13) {
 	      e.preventDefault();
-	      console.log('submit', e.nativeEvent.keyCode);
 	
 	      var inputValue = e.target.value;
 	
@@ -3788,11 +3788,11 @@
 	  },
 	  render: function render() {
 	    return _react2.default.createElement(
-	      'form',
+	      "form",
 	      {
-	        className: 'trainerForm'
+	        className: "trainerForm"
 	      },
-	      _react2.default.createElement('input', { id: 'trainerInput', type: 'password',
+	      _react2.default.createElement("input", { id: "trainerInput", type: "password",
 	        onChange: this.handleInputChange,
 	        onKeyDown: this.handleReset,
 	        autoFocus: true,
