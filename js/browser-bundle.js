@@ -124,13 +124,13 @@
 	    this.setState({ trainerInput: inputString });
 	  },
 	  resetApp: function resetApp() {
-	    this.setState(this.initialState);
+	    this.setState(this.initialState());
 	  },
 	  render: function render() {
 	    return React.createElement(
 	      'div',
 	      null,
-	      React.createElement(_Interface.Interface, _extends({ key: this.state.resetState, data: this.state }, this)),
+	      React.createElement(_Interface.Interface, _extends({ data: this.state }, this)),
 	      React.createElement(_AccuracyVisualAid.AccuracyVisualAid, _extends({ data: this.state }, this))
 	    );
 	  }

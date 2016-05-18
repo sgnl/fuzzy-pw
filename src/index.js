@@ -24,7 +24,7 @@ const MuscleMemoryApp = React.createClass({
   handleSubmit: function(inputValue) {
     // if there is no target then set the target to be the string from the form
     if (!this.state.targetString) {
-      this.setState({
+      this.setState({  
         targetString: inputValue,
         trainerInput: '',
         bannerMessage: 'press the enter key to compare. press shift+enter to reset'
@@ -34,6 +34,8 @@ const MuscleMemoryApp = React.createClass({
     // the input with the target string which was set earlier
     } else {
       this.compareStrings(inputValue);
+
+      
     }
   },
   updateCharacterCount: function(characterLength) {
@@ -70,12 +72,12 @@ const MuscleMemoryApp = React.createClass({
     this.setState({trainerInput: inputString});
   },
   resetApp: function() {
-    this.setState(this.initialState);
+    this.setState(this.initialState());
   },
   render: function() {
     return (
       <div>
-        <Interface key={this.state.resetState} data={this.state} {...this} />
+        <Interface data={this.state} {...this} />
         <AccuracyVisualAid data={this.state} {...this} />
       </div>
     );
