@@ -10,6 +10,7 @@ const MuscleMemoryApp = React.createClass({
     return {
       targetString: '',
       trainerInput: '',
+      history: [],
       bannerMessage: 'set the key-pattern you want to train',
       win: false,
       resetState: false
@@ -24,7 +25,7 @@ const MuscleMemoryApp = React.createClass({
   handleSubmit: function(inputValue) {
     // if there is no target then set the target to be the string from the form
     if (!this.state.targetString) {
-      this.setState({  
+      this.setState({
         targetString: inputValue,
         trainerInput: '',
         bannerMessage: 'press the enter key to compare. press shift+enter to reset'
@@ -46,11 +47,15 @@ const MuscleMemoryApp = React.createClass({
     this.setState({bannerMessage: msg});
   },
   compareStrings: function(inputString) {
+    // this is used by the HistoryDisplay component to signal an event
+    this.setState({history: this.state.history.concat(inputString) });
+
+    // some comparision logic with feedback for the user
     switch(true) {
       case inputString.length < this.state.targetString.length:
         this.resetTrainerInput();
         return this.updateBanner('attempt too short. try again.');
-      
+
       case inputString.length > this.state.targetString.length:
         this.resetTrainerInput();
         return this.updateBanner('attempt too long. try agin.');

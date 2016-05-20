@@ -1,11 +1,11 @@
 
 import React from 'react'
 
-const VisualAid = props => {
+const VisualAid = ({ targetString, trainerInput }) => {
   return (
-    <div className="accuracyDisplay">
-      {Array.prototype.map.call(props.data.targetString, (char, i) => {
-        if (!props.data.trainerInput.length) {
+    <div className="accuracy-display">
+      {Array.prototype.map.call(targetString, (char, i) => {
+        if (!trainerInput.length) {
           return (
               <div className="box box-initial-neutral" key={i}></div>
           );
@@ -13,9 +13,9 @@ const VisualAid = props => {
 
         let boxStatus = null;
 
-        if (char === props.data.trainerInput[i]) {
+        if (char === trainerInput[i]) {
           boxStatus = 'success';
-        } else if (!props.data.trainerInput[i]) {
+        } else if (!trainerInput[i]) {
           boxStatus = 'initial-neutral';
         } else {
           boxStatus = 'fail';

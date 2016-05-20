@@ -48,7 +48,7 @@ html, body {
       border-bottom: 1px solid #fff; }
     .container #app .banner {
       min-height: 24px; }
-    .container #app .accuracyDisplay {
+    .container #app .accuracy-display {
       min-height: 60px;
       display: -webkit-box;
       display: flex;
@@ -57,17 +57,17 @@ html, body {
       -webkit-justify-content: space-around;
           -ms-flex-pack: distribute;
               justify-content: space-around; }
-      .container #app .accuracyDisplay .box {
+      .container #app .accuracy-display .box {
         height: 20px;
         width: 20px;
         border: 1px solid #666;
         -webkit-transition: background-color 0.25s;
         transition: background-color 0.25s; }
-        .container #app .accuracyDisplay .box-initial-neutral {
+        .container #app .accuracy-display .box-initial-neutral {
           background-color: #666; }
-        .container #app .accuracyDisplay .box-success {
+        .container #app .accuracy-display .box-success {
           background-color: #22FFBB; }
-        .container #app .accuracyDisplay .box-fail {
+        .container #app .accuracy-display .box-fail {
           background-color: #FF5888;
           -webkit-animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
                   animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;

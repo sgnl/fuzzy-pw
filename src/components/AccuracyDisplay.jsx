@@ -1,22 +1,21 @@
-
 import React from 'react';
 
 import { VisualAid } from './VisualAid';
 import { HistoryDisplay } from './HistoryDisplay';
 
 const AccuracyDisplay = React.createClass({
-  getInitialState: function() {
-    return {
-      mostRecentComparision: [],
-      history: []
-    };
-  },
   render: function() {
-    console.log(this.state);
+    console.log(this.props.data)
     return (
         <div>
-          <VisualAid data={this.props.data} {...this} />
-          <HistoryDisplay data={this.props.data} {...this} />
+          <VisualAid
+            targetString={this.props.data.targetString}
+            trainerInput={this.props.data.trainerInput}
+            {...this} />
+          <HistoryDisplay
+            history={this.props.data.history}
+            targetString={this.props.data.targetString}
+          />
         </div>
     );
   }

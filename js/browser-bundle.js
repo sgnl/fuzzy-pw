@@ -62,6 +62,7 @@
 	    return {
 	      targetString: '',
 	      trainerInput: '',
+	      history: [],
 	      bannerMessage: 'set the key-pattern you want to train',
 	      win: false,
 	      resetState: false
@@ -100,6 +101,10 @@
 	    this.setState({ bannerMessage: msg });
 	  },
 	  compareStrings: function compareStrings(inputString) {
+	    // this is used by the HistoryDisplay component to signal an event
+	    this.setState({ history: this.state.history.concat(inputString) });
+	
+	    // some comparision logic with feedback for the user
 	    switch (true) {
 	      case inputString.length < this.state.targetString.length:
 	        this.resetTrainerInput();
@@ -3756,12 +3761,14 @@
 	    this.props.handleInputChange(text);
 	  },
 	  handleReset: function handleReset(e) {
+	    // reset if [shift+enter] key combination is pressed
 	    if (e.keyCode === 13 && e.shiftKey) {
 	      e.preventDefault();
 	      e.stopPropagation();
 	      return this.props.resetApp();
 	    }
 	
+	    // compare strings if JUST [enter] key is pressed
 	    if (e.keyCode === 13) {
 	      e.preventDefault();
 	
@@ -3845,19 +3852,19 @@
 	var AccuracyDisplay = _react2.default.createClass({
 	  displayName: 'AccuracyDisplay',
 	
-	  getInitialState: function getInitialState() {
-	    return {
-	      mostRecentComparision: [],
-	      history: []
-	    };
-	  },
 	  render: function render() {
-	    console.log(this.state);
+	    console.log(this.props.data);
 	    return _react2.default.createElement(
 	      'div',
 	      null,
-	      _react2.default.createElement(_VisualAid.VisualAid, _extends({ data: this.props.data }, this)),
-	      _react2.default.createElement(_HistoryDisplay.HistoryDisplay, _extends({ data: this.props.data }, this))
+	      _react2.default.createElement(_VisualAid.VisualAid, _extends({
+	        targetString: this.props.data.targetString,
+	        trainerInput: this.props.data.trainerInput
+	      }, this)),
+	      _react2.default.createElement(_HistoryDisplay.HistoryDisplay, {
+	        history: this.props.data.history,
+	        targetString: this.props.data.targetString
+	      })
 	    );
 	  }
 	});
@@ -3881,20 +3888,23 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var VisualAid = function VisualAid(props) {
+	var VisualAid = function VisualAid(_ref) {
+	  var targetString = _ref.targetString;
+	  var trainerInput = _ref.trainerInput;
+	
 	  return _react2.default.createElement(
 	    "div",
-	    { className: "accuracyDisplay" },
-	    Array.prototype.map.call(props.data.targetString, function (char, i) {
-	      if (!props.data.trainerInput.length) {
+	    { className: "accuracy-display" },
+	    Array.prototype.map.call(targetString, function (char, i) {
+	      if (!trainerInput.length) {
 	        return _react2.default.createElement("div", { className: "box box-initial-neutral", key: i });
 	      }
 	
 	      var boxStatus = null;
 	
-	      if (char === props.data.trainerInput[i]) {
+	      if (char === trainerInput[i]) {
 	        boxStatus = 'success';
-	      } else if (!props.data.trainerInput[i]) {
+	      } else if (!trainerInput[i]) {
 	        boxStatus = 'initial-neutral';
 	      } else {
 	        boxStatus = 'fail';
@@ -3914,7 +3924,7 @@
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	                                  value: true
 	});
 	exports.HistoryDisplay = undefined;
 	
@@ -3924,21 +3934,22 @@
 	
 	var _VisualAid = __webpack_require__(36);
 	
-	var _VisualAid2 = _interopRequireDefault(_VisualAid);
-	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var HistoryDisplay = function HistoryDisplay(_ref) {
-	    var history = _ref.history;
-	    return _react2.default.createElement(
-	        'div',
-	        { className: 'accuracyDisplay' },
-	        _react2.default.createElement(
-	            'h1',
-	            null,
-	            'History Here'
-	        )
-	    );
+	                                  var history = _ref.history;
+	                                  var targetString = _ref.targetString;
+	                                  return _react2.default.createElement(
+	                                                                    'div',
+	                                                                    { className: 'accuracy-display history-display' },
+	                                                                    history.map(function (string, index) {
+	                                                                                                      return _react2.default.createElement(_VisualAid.VisualAid, {
+	                                                                                                                                        targetString: targetString,
+	                                                                                                                                        trainerInput: string,
+	                                                                                                                                        key: index
+	                                                                                                      });
+	                                                                    })
+	                                  );
 	};
 	
 	exports.HistoryDisplay = HistoryDisplay;
