@@ -1,6 +1,6 @@
 import React from 'react'
 
-const AccuracyVisualAid = props => {
+const VisualAid = props => {
   return (
     <div className="accuracyDisplay">
       {Array.prototype.map.call(props.data.targetString, (char, i) => {
@@ -28,4 +28,4 @@ const AccuracyVisualAid = props => {
   );
 };
 
-export { AccuracyVisualAid }
+export { VisualAid }

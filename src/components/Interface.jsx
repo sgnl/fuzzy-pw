@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { TargetTrainer } from './TargetTrainer'
-import { FeedbackBanner } from './FeedbackBanner'
+import { TargetTrainer } from './TargetTrainer.jsx'
+import { FeedbackBanner } from './FeedbackBanner.jsx'
 
 const Interface = React.createClass({
   render: function() {

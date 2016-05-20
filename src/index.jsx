@@ -2,8 +2,8 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
 
-import { Interface } from './components/Interface'
-import { AccuracyVisualAid } from './components/AccuracyVisualAid'
+import { Interface } from './components/Interface.jsx'
+import { AccuracyDisplay } from './components/AccuracyDisplay.jsx'
 
 const MuscleMemoryApp = React.createClass({
   initialState: function() {
@@ -34,8 +34,6 @@ const MuscleMemoryApp = React.createClass({
     // the input with the target string which was set earlier
     } else {
       this.compareStrings(inputValue);
-
-      
     }
   },
   updateCharacterCount: function(characterLength) {
@@ -78,7 +76,7 @@ const MuscleMemoryApp = React.createClass({
     return (
       <div>
         <Interface data={this.state} {...this} />
-        <AccuracyVisualAid data={this.state} {...this} />
+        <AccuracyDisplay data={this.state} {...this} />
       </div>
     );
   }
