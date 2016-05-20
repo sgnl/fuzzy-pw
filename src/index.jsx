@@ -48,7 +48,7 @@ const MuscleMemoryApp = React.createClass({
   },
   compareStrings: function(inputString) {
     // this is used by the HistoryDisplay component to signal an event
-    this.setState({history: this.state.history.concat(inputString) });
+    this.setState({history: [inputString].concat(this.state.history) });
 
     // some comparision logic with feedback for the user
     switch(true) {

@@ -95,6 +95,15 @@ html, body {
                 }
             }
         }
+
+        .history-display {
+          min-height: 200px;
+          max-height: 200px;
+
+          .accuracy-display .box {
+            animation: initial;
+          }
+        }
     }
 }
 

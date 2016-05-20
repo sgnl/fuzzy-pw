@@ -102,7 +102,7 @@
 	  },
 	  compareStrings: function compareStrings(inputString) {
 	    // this is used by the HistoryDisplay component to signal an event
-	    this.setState({ history: this.state.history.concat(inputString) });
+	    this.setState({ history: [inputString].concat(this.state.history) });
 	
 	    // some comparision logic with feedback for the user
 	    switch (true) {
@@ -3895,22 +3895,22 @@
 	  return _react2.default.createElement(
 	    "div",
 	    { className: "accuracy-display" },
-	    Array.prototype.map.call(targetString, function (char, i) {
+	    targetString.split("").map(function (char, index) {
 	      if (!trainerInput.length) {
-	        return _react2.default.createElement("div", { className: "box box-initial-neutral", key: i });
+	        return _react2.default.createElement("div", { className: "box box-initial-neutral", key: index });
 	      }
 	
 	      var boxStatus = null;
 	
-	      if (char === trainerInput[i]) {
+	      if (char === trainerInput[index]) {
 	        boxStatus = 'success';
-	      } else if (!trainerInput[i]) {
+	      } else if (!trainerInput[index]) {
 	        boxStatus = 'initial-neutral';
 	      } else {
 	        boxStatus = 'fail';
 	      }
 	
-	      return _react2.default.createElement("div", { className: "box box-" + boxStatus, key: i });
+	      return _react2.default.createElement("div", { className: "box box-" + boxStatus, key: index });
 	    })
 	  );
 	};
@@ -3941,7 +3941,7 @@
 	                                  var targetString = _ref.targetString;
 	                                  return _react2.default.createElement(
 	                                                                    'div',
-	                                                                    { className: 'accuracy-display history-display' },
+	                                                                    { className: 'history-display' },
 	                                                                    history.map(function (string, index) {
 	                                                                                                      return _react2.default.createElement(_VisualAid.VisualAid, {
 	                                                                                                                                        targetString: targetString,
