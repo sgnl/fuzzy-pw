@@ -1,7 +1,8 @@
 
 import React from 'react';
 
-import { VisualAid } from './VisualAid.jsx';
+import { VisualAid } from './VisualAid';
+import { HistoryDisplay } from './HistoryDisplay';
 
 const AccuracyDisplay = React.createClass({
   getInitialState: function() {
@@ -15,7 +16,7 @@ const AccuracyDisplay = React.createClass({
     return (
         <div>
           <VisualAid data={this.props.data} {...this} />
-          <VisualAid data={this.props.data} {...this} />
+          <HistoryDisplay data={this.props.data} {...this} />
         </div>
     );
   }

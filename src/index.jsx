@@ -2,8 +2,8 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
 
-import { Interface } from './components/Interface.jsx'
-import { AccuracyDisplay } from './components/AccuracyDisplay.jsx'
+import { Interface } from './components/Interface'
+import { AccuracyDisplay } from './components/AccuracyDisplay'
 
 const MuscleMemoryApp = React.createClass({
   initialState: function() {
