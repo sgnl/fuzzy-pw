@@ -5,7 +5,6 @@ import { HistoryDisplay } from './HistoryDisplay';
 
 const AccuracyDisplay = React.createClass({
   render: function() {
-    console.log(this.props.data)
     return (
         <div>
           <VisualAid

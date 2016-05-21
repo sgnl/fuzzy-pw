@@ -1,136 +1,150 @@
-
 @import url('https://fonts.googleapis.com/css?family=Raleway');
 
+@font-face {
+  font-family: 'dotsfont';
+  src: url('fonts/dotsfont.eot');
+  src: url('fonts/dotsfont.eot?#iefix') format('embedded-opentype'),
+       url('fonts/dotsfont.woff') format('woff'),
+       url('fonts/dotsfont.ttf') format('truetype'),
+       url('fonts/dotsfont.svg#dotsfontregular') format('svg');
+}
+
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html, body {
-    font-family: 'Raleway', sans-serif;
-    font-size: 20px;
-    text-align: center;
+  font-family: 'Raleway', sans-serif;
+  font-size: 20px;
+  text-align: center;
 
-    min-height: 100%;
+  min-height: 100%;
 
-    background: #ddd6f3; /* fallback for old browsers */
-    background: -webkit-linear-gradient(to left, #ddd6f3 , #faaca8); /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to left, #ddd6f3 , #faaca8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #ddd6f3; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #ddd6f3 , #faaca8); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #ddd6f3 , #faaca8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .container {
-    min-height: 100%;
+  min-height: 100%;
 
-    display: -ms-flexbox;
-    display: -webkit-flex;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  .hero {
     display: flex;
-
     align-items: center;
     justify-content: center;
+  }
 
-    .hero {
+  header {
+    h1 {
+      color: white;
+    }
+  }
+
+  #app {
+    color: #333;
+
+    .interface {
+      margin: 2.5rem 0 1.25rem;
     }
 
-    header {
-        h1 {
-            color: white;
-        }
+    form input {
+      font-family: 'dotsfont';
+
+      font-size: 1rem;
+      line-height: 2.5rem;
+      letter-spacing: .125rem;
+      text-align: center;
+
+      background: transparent;
+      outline: 0;
+      border: 0;
+      border-bottom: 1px solid #fff;
     }
 
-    #app {
-        color: #333;
-
-        .interface {
-            margin: 2.5rem 0 1.25rem;
-        }
-
-        form input {
-            font-size: 1rem;
-            line-height: 2.5rem;
-            letter-spacing: .125rem;
-            text-align: center;
-
-            background: transparent;
-            outline: 0;
-            border: 0;
-            border-bottom: 1px solid #fff;
-        }
-
-        .banner {
-            min-height: 24px; 
-        }
-
-        .accuracy-display {
-            min-height: 60px;
-
-            display: flex;
-            display: -ms-flexbox;
-            display: -webkit-flex;
-
-            justify-content: space-around;
-
-            .box {
-                height: 20px;
-                width: 20px;
-
-                border: 1px solid #666;
-
-                transition: background-color 0.25s;
-
-                &-initial-neutral {
-                    background-color: #666;
-                }
-
-                &-success {
-                    background-color: #22FFBB;
-                }
-
-                &-fail {
-                    background-color: #FF5888;
-                    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both; 
-                    transform: translate3d(0, 0, 0);
-                    animation-iteration-count: 1;
-                    transform: scale(1);
-                }
-            }
-        }
-
-        .history-display {
-          min-height: 200px;
-          max-height: 200px;
-
-          .accuracy-display .box {
-            animation: initial;
-          }
-        }
+    .banner {
+      min-height: 24px;
     }
+
+    .accuracy-display {
+      min-height: 60px;
+
+      display: flex;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+
+      justify-content: space-around;
+
+      .box {
+        height: 20px;
+        width: 20px;
+
+        border: 1px solid #666;
+
+        transition: background-color 0.25s;
+
+        &-initial-neutral {
+          background-color: #666;
+        }
+
+        &-success {
+          background-color: #22FFBB;
+        }
+
+        &-fail {
+          background-color: #FF5888;
+          animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+          transform: translate3d(0, 0, 0);
+          animation-iteration-count: 1;
+          transform: scale(1);
+        }
+      }
+    }
+
+    .history-display {
+      min-height: 200px;
+      max-height: 200px;
+      overflow: hidden;
+
+      .accuracy-display .box {
+        animation: initial;
+      }
+    }
+  }
 }
 
 /* used during keypress animation neutral -> fail */
 @-webkit-keyframes grow {
 
-    25%, 75% {
-      -webkit-transform: scale(1.2);
-      transform: scale(1.2);
-    }
+  25%, 75% {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+  }
 
-    50% {
-      -webkit-transform: scale(1.4);
-      transform: scale(1.4);
-    }
+  50% {
+    -webkit-transform: scale(1.4);
+    transform: scale(1.4);
+  }
 
-    100% {
-      transform: scale(1);
-    }
+  100% {
+    transform: scale(1);
+  }
 }
 
 /* keypress animation, fail or success -> neutral */
 @-webkit-keyframes shake {
-10%, 90% {
+  10%, 90% {
     transform: translate3d(-1px, 0, 0);
   }
-  
+
   20%, 80% {
     transform: translate3d(2px, 0, 0);
   }

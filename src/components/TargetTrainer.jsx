@@ -30,11 +30,13 @@ const TargetTrainer = React.createClass({
         <form
           className="trainerForm"
           >
-          <input id="trainerInput" type="password"
+          <input id="trainerInput" type="text"
             onChange={this.handleInputChange}
             onKeyDown={this.handleReset}
-            autoFocus={true}
             value={this.props.data.trainerInput}
+            autoFocus={true}
+            spellCheck="off"
+            autoComplete="off"
           />
         </form>
     );
