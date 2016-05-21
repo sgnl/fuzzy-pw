@@ -35,7 +35,7 @@ const TargetTrainer = React.createClass({
             onKeyDown={this.handleReset}
             value={this.props.data.trainerInput}
             autoFocus={true}
-            spellCheck="off"
+            spellCheck="false"
             autoComplete="off"
           />
         </form>
