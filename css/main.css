@@ -13,7 +13,7 @@ html, body {
   font-family: 'Raleway', sans-serif;
   font-size: 20px;
   text-align: center;
-  min-height: 100%;
+  height: 100%;
   background: #ddd6f3;
   /* fallback for old browsers */
   background: -webkit-linear-gradient(to left, #ddd6f3, #faaca8);
@@ -23,10 +23,9 @@ html, body {
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ }
 
 .container {
-  min-height: 100%;
-  display: -ms-flexbox;
-  display: -webkit-flex;
   display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
   -webkit-align-items: center;
@@ -36,19 +35,6 @@ html, body {
   -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center; }
-  .container .hero {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-    -webkit-justify-content: center;
-        -ms-flex-pack: center;
-            justify-content: center; }
   .container header h1 {
     color: white; }
   .container #app {

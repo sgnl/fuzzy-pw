@@ -83,7 +83,7 @@
 	        bannerMessage: 'press the enter key to compare. press shift+enter to reset'
 	      });
 	
-	      // otherwise we are in the `game loop` so we should compare
+	      // otherwise we  are in the `game loop` so we should compare
 	      // the input with the target string which was set earlier
 	    } else {
 	        this.compareStrings(inputValue);
@@ -135,6 +135,15 @@
 	    return React.createElement(
 	      'div',
 	      null,
+	      React.createElement(
+	        'header',
+	        null,
+	        React.createElement(
+	          'h1',
+	          null,
+	          'Muscle Memory Password Trainer'
+	        )
+	      ),
 	      React.createElement(_Interface.Interface, _extends({ data: this.state }, this)),
 	      React.createElement(_AccuracyDisplay.AccuracyDisplay, _extends({ data: this.state }, this))
 	    );
@@ -3783,11 +3792,13 @@
 	      {
 	        className: "trainerForm"
 	      },
-	      _react2.default.createElement("input", { id: "trainerInput", type: "password",
+	      _react2.default.createElement("input", { id: "trainerInput", type: "text",
 	        onChange: this.handleInputChange,
 	        onKeyDown: this.handleReset,
+	        value: this.props.data.trainerInput,
 	        autoFocus: true,
-	        value: this.props.data.trainerInput
+	        spellCheck: "off",
+	        autoComplete: "off"
 	      })
 	    );
 	  }
@@ -3853,7 +3864,6 @@
 	  displayName: 'AccuracyDisplay',
 	
 	  render: function render() {
-	    console.log(this.props.data);
 	    return _react2.default.createElement(
 	      'div',
 	      null,

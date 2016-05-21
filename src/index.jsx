@@ -31,7 +31,7 @@ const MuscleMemoryApp = React.createClass({
         bannerMessage: 'press the enter key to compare. press shift+enter to reset'
       });
 
-    // otherwise we are in the `game loop` so we should compare
+    // otherwise we  are in the `game loop` so we should compare
     // the input with the target string which was set earlier
     } else {
       this.compareStrings(inputValue);
@@ -80,6 +80,9 @@ const MuscleMemoryApp = React.createClass({
   render: function() {
     return (
       <div>
+        <header>
+          <h1>Muscle Memory Password Trainer</h1>
+        </header>
         <Interface data={this.state} {...this} />
         <AccuracyDisplay data={this.state} {...this} />
       </div>

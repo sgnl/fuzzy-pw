@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack --progress --colors --watch",
     "css:build": "node-sass scss/main.scss css/main.css -w scss/",
-    "css:prefix": "postcss -u autoprefixer -r css/* -w",
+    "css:prefix": "postcss -u autoprefixer -r css/main.css -w",
     "dev": "npm run css:build & npm run css:prefix & npm start"
   },
   "repository": {

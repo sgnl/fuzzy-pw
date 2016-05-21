@@ -20,7 +20,7 @@ html, body {
   font-size: 20px;
   text-align: center;
 
-  min-height: 100%;
+  height: 100%;
 
   background: #ddd6f3; /* fallback for old browsers */
   background: -webkit-linear-gradient(to left, #ddd6f3 , #faaca8); /* Chrome 10-25, Safari 5.1-6 */
@@ -28,19 +28,12 @@ html, body {
 }
 
 .container {
-  min-height: 100%;
-
-  display: -ms-flexbox;
-  display: -webkit-flex;
   display: flex;
 
   align-items: center;
   justify-content: center;
 
   .hero {
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
 
   header {
