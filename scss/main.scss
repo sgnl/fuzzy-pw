@@ -30,6 +30,8 @@ html, body {
 .container {
   display: flex;
 
+  min-height: 100%;
+
   align-items: center;
   justify-content: center;
 
@@ -108,6 +110,7 @@ html, body {
       overflow: hidden;
 
       .accuracy-display .box {
+        // cancel animations declared previously
         animation: initial;
       }
     }
