@@ -55,7 +55,7 @@ html, body {
     .container #app .banner {
       min-height: 24px; }
     .container #app .accuracy-display {
-      min-height: 60px;
+      min-height: 58px;
       display: -webkit-box;
       display: flex;
       display: -ms-flexbox;
