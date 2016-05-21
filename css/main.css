@@ -44,6 +44,7 @@ html, body {
       margin: 2.5rem 0 1.25rem; }
     .container #app form input {
       font-family: 'dotsfont';
+      color: #333;
       font-size: 1rem;
       line-height: 2.5rem;
       letter-spacing: .125rem;
@@ -70,7 +71,7 @@ html, body {
         -webkit-transition: background-color 0.25s;
         transition: background-color 0.25s; }
         .container #app .accuracy-display .box-initial-neutral {
-          background-color: #666; }
+          background-color: #444; }
         .container #app .accuracy-display .box-success {
           background-color: #22FFBB; }
         .container #app .accuracy-display .box-fail {
