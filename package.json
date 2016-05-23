@@ -19,6 +19,11 @@
     "url": "https://github.com/sgnl/fuzzy-pw/issues"
   },
   "homepage": "https://github.com/sgnl/fuzzy-pw#readme",
+  "peerDependencies": {
+    "eslint-plugin-import": "^1.8.0",
+    "eslint-plugin-jsx-a11y": "^1.0.2",
+    "eslint-plugin-import": "1.6.0"
+  },
   "dependencies": {
     "babel-core": "^6.7.7",
     "babel-loader": "^6.2.4",
@@ -30,6 +35,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^6.3.6",
+    "clean-css": "^3.4.13",
     "eslint": "^2.9.0",
     "eslint-config-airbnb": "^8.0.0",
     "eslint-plugin-react": "^5.0.1",
