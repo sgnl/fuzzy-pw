@@ -29,14 +29,13 @@ html, body {
 
 .container {
   display: flex;
+  flex-flow: column wrap;
 
   min-height: 100%;
 
   align-items: center;
+  align-content: center;
   justify-content: center;
-
-  .hero {
-  }
 
   header {
     h1 {
@@ -45,6 +44,7 @@ html, body {
   }
 
   #app {
+    width: 80%;
     color: #333;
 
     .interface {
@@ -74,9 +74,8 @@ html, body {
       min-height: 58px;
 
       display: flex;
-      display: -ms-flexbox;
-      display: -webkit-flex;
-
+      flex-flow: row nowrap;
+      align-content: center;
       justify-content: space-around;
 
       .box {
@@ -114,6 +113,19 @@ html, body {
         // cancel animations declared previously
         animation: initial;
       }
+    }
+  }
+
+  footer {
+    width: 100%;
+    margin-top: 20px;
+
+    align-self: flex-end;
+    align-content: center;
+    justify-content: center;
+
+    p {
+      font-size: 0.75rem;
     }
   }
 }
