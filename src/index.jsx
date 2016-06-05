@@ -81,7 +81,10 @@ const MuscleMemoryApp = React.createClass({
     return (
       <div>
         <header>
-          <h1>Muscle Memory Password Trainer</h1>
+          <h1>
+            Muscle Memory Password Trainer
+            <a href="/faq.html" className="tooltip-help">?</a>
+          </h1>
         </header>
         <Interface data={this.state} {...this} />
         <AccuracyDisplay data={this.state} {...this} />

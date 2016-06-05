@@ -41,6 +41,12 @@ html, body {
     h1 {
       color: white;
     }
+
+    .tooltip-help {
+      font-size: 0.6rem;
+      color: #0000FF;
+      text-decoration: underline;
+    }
   }
 
   #app {
@@ -48,7 +54,7 @@ html, body {
     color: #333;
 
     .interface {
-      margin: 2.5rem 0 1.25rem;
+      margin: 2rem 0 1.25rem;
     }
 
     form input {
@@ -67,7 +73,10 @@ html, body {
     }
 
     .banner {
+      padding: 10px;
       min-height: 24px;
+
+      font-size: 18px;
     }
 
     .accuracy-display {
@@ -118,7 +127,7 @@ html, body {
 
   footer {
     width: 100%;
-    margin-top: 20px;
+    margin-top: 1.8rem;
 
     align-self: flex-end;
     align-content: center;

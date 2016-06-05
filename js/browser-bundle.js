@@ -141,7 +141,12 @@
 	        React.createElement(
 	          'h1',
 	          null,
-	          'Muscle Memory Password Trainer'
+	          'Muscle Memory Password Trainer',
+	          React.createElement(
+	            'a',
+	            { href: '/faq.html', className: 'tooltip-help' },
+	            '?'
+	          )
 	        )
 	      ),
 	      React.createElement(_Interface.Interface, _extends({ data: this.state }, this)),
