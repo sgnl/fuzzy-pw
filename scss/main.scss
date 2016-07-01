@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Raleway');
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,700');
 
 @font-face {
   font-family: 'dotsfont';
@@ -136,6 +136,62 @@ html, body {
     p {
       font-size: 0.75rem;
     }
+  }
+
+  // FAQ section
+  &.faq {
+    display: flex;
+
+    & h1 {
+      margin: 0;
+    }
+
+    & nav {
+      display: flex;
+      justify-content: space-between;
+
+      & ul {
+        display: flex;
+        list-style-type: none;
+
+        & li {
+          padding: 0.75rem 1rem 1.5rem;
+          font-size: 0.75rem;
+        }
+      }
+    }
+
+    article {
+      margin: 1.5rem 0;
+      text-align: left;
+
+      h2 {
+        text-align: center;
+        margin-bottom: 1rem;
+        text-decoration: underline;
+      }
+
+      h3 {
+        padding-bottom: 0.75rem;
+        font-size: 1rem;
+        font-weight: 700;
+
+        &:not(first-child) {
+          padding: 0.25rem 0;
+        }
+      }
+
+      p {
+        width: 50%;
+        margin: 0 auto;
+      }
+
+      ul {
+        list-style-type: none;
+        margin-bottom: 0.75rem;
+      }
+    }
+
   }
 }
 
